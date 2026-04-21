@@ -1,26 +1,72 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import { SideNav } from "@/components/SideNav";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { SkillsSection } from "@/components/sections/SkillsSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Alex Mercer — Web Developer Portfolio" },
+      { name: "description", content: "Full-stack web developer crafting fast, accessible, and elegantly engineered digital experiences." },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+const sections = [
+  { id: "hero", label: "Intro" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Stack" },
+  { id: "projects", label: "Work" },
+  { id: "contact", label: "Contact" },
+];
 
 function Index() {
-  return <PlaceholderIndex />;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState("hero");
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && e.intersectionRatio > 0.5) {
+            setActive(e.target.id);
+          }
+        });
+      },
+      { root: container, threshold: [0.5] }
+    );
+
+    sections.forEach((s) => {
+      const el = container.querySelector(`#${s.id}`);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleNavigate = (id: string) => {
+    const el = containerRef.current?.querySelector(`#${id}`);
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <div className="relative">
+      <SideNav sections={sections} active={active} onNavigate={handleNavigate} />
+      <div ref={containerRef} className="snap-container">
+        <div id="hero"><HeroSection /></div>
+        <div id="about"><AboutSection /></div>
+        <div id="skills"><SkillsSection /></div>
+        <div id="projects"><ProjectsSection /></div>
+        <div id="contact"><ContactSection /></div>
+      </div>
+    </div>
+  );
 }
