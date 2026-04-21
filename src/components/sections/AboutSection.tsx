@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import portrait from "@/assets/portrait.jpg";
 
 export function AboutSection() {
   const stats = [
@@ -9,7 +10,7 @@ export function AboutSection() {
 
   return (
     <section className="snap-section flex flex-col justify-center px-6 md:px-20 py-20 bg-surface">
-      <div className="max-w-6xl grid md:grid-cols-12 gap-12 items-start">
+      <div className="max-w-6xl grid md:grid-cols-12 gap-10 md:gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -26,28 +27,48 @@ export function AboutSection() {
         </motion.div>
 
         <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="md:col-span-3 relative"
+        >
+          <div className="absolute -inset-2 border border-accent-lime/40 rounded-sm translate-x-3 translate-y-3" />
+          <img
+            src={portrait}
+            alt="Portrait of Alex Mercer"
+            width={896}
+            height={1216}
+            loading="lazy"
+            className="relative w-full h-auto object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700"
+          />
+          <div className="mt-3 font-mono text-[10px] uppercase tracking-widest text-foreground/40 flex justify-between">
+            <span>Alex M.</span>
+            <span>Berlin · DE</span>
+          </div>
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="md:col-span-7 md:col-start-6 space-y-6 text-lg text-foreground/75 leading-relaxed"
+          className="md:col-span-5 space-y-5 text-base md:text-lg text-foreground/75 leading-relaxed"
         >
           <p>
             I'm a developer based in Berlin, focused on the intersection of design systems,
-            performance, and meaningful interaction. I work with founders and design teams to
-            translate ambitious ideas into production-ready interfaces.
+            performance, and meaningful interaction.
           </p>
           <p>
             My toolkit centers on TypeScript, React, and modern build tooling — but the craft
-            matters more than the stack. I care about typography, motion, and the small
-            details that make products feel alive.
+            matters more than the stack.
           </p>
 
-          <div className="grid grid-cols-3 gap-6 pt-10 border-t border-foreground/10">
+          <div className="grid grid-cols-3 gap-4 pt-8 border-t border-foreground/10">
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="font-display text-4xl md:text-5xl text-accent-lime font-light">{s.value}</div>
-                <div className="font-mono text-[11px] uppercase tracking-widest text-foreground/50 mt-2">
+                <div className="font-display text-3xl md:text-4xl text-accent-lime font-light">{s.value}</div>
+                <div className="font-mono text-[10px] uppercase tracking-widest text-foreground/50 mt-2">
                   {s.label}
                 </div>
               </div>
