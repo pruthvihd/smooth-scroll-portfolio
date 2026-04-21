@@ -10,7 +10,7 @@ export function AboutSection() {
 
   return (
     <section className="snap-section flex flex-col justify-center px-6 md:px-20 py-20 bg-surface">
-      <div className="max-w-6xl grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+      <div className="max-w-6xl mx-auto w-full grid md:grid-cols-12 gap-10 md:gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -31,18 +31,18 @@ export function AboutSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="md:col-span-3 relative"
+          className="md:col-span-3 relative max-w-[240px] md:max-w-none mx-auto w-full"
         >
-          <div className="absolute -inset-2 border border-accent-lime/40 rounded-sm translate-x-3 translate-y-3" />
+          <div className="absolute -inset-1 border border-accent-lime/40 rounded-sm translate-x-2 translate-y-2 md:translate-x-3 md:translate-y-3 pointer-events-none" />
           <img
             src={portrait}
             alt="Portrait of Alex Mercer"
             width={896}
             height={1216}
             loading="lazy"
-            className="relative w-full h-auto object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700"
+            className="relative w-full aspect-[3/4] object-cover object-center rounded-sm grayscale hover:grayscale-0 transition-all duration-700"
           />
-          <div className="mt-3 font-mono text-[10px] uppercase tracking-widest text-foreground/40 flex justify-between">
+          <div className="relative mt-3 font-mono text-[10px] uppercase tracking-widest text-foreground/40 flex justify-between">
             <span>Alex M.</span>
             <span>Berlin · DE</span>
           </div>
