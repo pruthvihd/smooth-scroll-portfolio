@@ -3,7 +3,7 @@ import { ArrowDown } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="snap-section relative flex flex-col justify-center px-6 md:px-20 grid-bg overflow-hidden">
+    <section className="snap-section relative flex flex-col justify-center px-6 md:px-20 grid-blueprint overflow-hidden">
       <div className="absolute top-8 left-6 md:left-20 font-mono text-xs text-foreground/50 uppercase tracking-[0.3em]">
         Portfolio · 2026
       </div>

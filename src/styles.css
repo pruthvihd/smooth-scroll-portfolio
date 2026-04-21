@@ -180,6 +180,54 @@
     color: transparent;
   }
 
+  /* Background pattern variants — swap the class on a section to change look */
+
+  /* Diagonal hatched lines */
+  .grid-diagonal {
+    background-image: repeating-linear-gradient(
+      45deg,
+      oklch(1 0 0 / 0.05) 0,
+      oklch(1 0 0 / 0.05) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  }
+
+  /* Dot grid */
+  .grid-dots {
+    background-image: radial-gradient(oklch(1 0 0 / 0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Horizontal rule lines (editorial / notebook) */
+  .grid-lines {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 47px,
+      oklch(1 0 0 / 0.06) 48px
+    );
+    background-size: 100% 48px;
+  }
+
+  /* Blueprint — fine grid, bold cells every 5, soft lime glow */
+  .grid-blueprint {
+    background-color: var(--background);
+    background-image:
+      radial-gradient(circle at 50% 50%, oklch(0.88 0.22 130 / 0.06) 0, transparent 60%),
+      linear-gradient(oklch(1 0 0 / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(1 0 0 / 0.08) 1px, transparent 1px),
+      linear-gradient(oklch(1 0 0 / 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(1 0 0 / 0.025) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      300px 300px,
+      300px 300px,
+      60px 60px,
+      60px 60px;
+  }
+
+  /* Original boxy grid (kept for reference) */
   .grid-bg {
     background-image:
       linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
