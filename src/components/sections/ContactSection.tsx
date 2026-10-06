@@ -9,7 +9,7 @@ const links = [
     value: "in/pruthvi-h-d",
     href: "https://www.linkedin.com/in/pruthvi-h-d-214446293?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
-  { label: "Instagram", value: "@pruthvi__15", href: "https://www.instagram.com/pruthvi__15" },
+  { label: "Instagram", value: "@pruthvi__15", href: "https://www.instagram.com/pruthvi___15" },
 ];
 
 export function ContactSection() {
