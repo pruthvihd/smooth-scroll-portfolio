@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { SideNav } from "@/components/SideNav";
+import { ThreeBackground } from "@/components/ThreeBackground";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
@@ -11,8 +12,12 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Alex Mercer — Web Developer Portfolio" },
-      { name: "description", content: "Full-stack web developer crafting fast, accessible, and elegantly engineered digital experiences." },
+      { title: "Pruthvi H D — Web Developer Portfolio" },
+      {
+        name: "description",
+        content:
+          "Full-stack web developer crafting fast, accessible, and elegantly engineered digital experiences.",
+      },
     ],
   }),
 });
@@ -41,7 +46,7 @@ function Index() {
           }
         });
       },
-      { root: container, threshold: [0.5] }
+      { root: container, threshold: [0.5] },
     );
 
     sections.forEach((s) => {
@@ -58,14 +63,25 @@ function Index() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative min-h-screen overflow-hidden bg-background text-foreground transition-colors duration-700">
+      <ThreeBackground />
       <SideNav sections={sections} active={active} onNavigate={handleNavigate} />
-      <div ref={containerRef} className="snap-container">
-        <div id="hero"><HeroSection /></div>
-        <div id="about"><AboutSection /></div>
-        <div id="skills"><SkillsSection /></div>
-        <div id="projects"><ProjectsSection /></div>
-        <div id="contact"><ContactSection /></div>
+      <div ref={containerRef} className="snap-container relative z-10">
+        <div id="hero">
+          <HeroSection />
+        </div>
+        <div id="about">
+          <AboutSection />
+        </div>
+        <div id="skills">
+          <SkillsSection />
+        </div>
+        <div id="projects">
+          <ProjectsSection />
+        </div>
+        <div id="contact">
+          <ContactSection />
+        </div>
       </div>
     </div>
   );

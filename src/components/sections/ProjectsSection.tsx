@@ -4,37 +4,41 @@ import { ArrowUpRight } from "lucide-react";
 const projects = [
   {
     no: "01",
-    title: "Lumen Analytics",
-    tags: ["React", "D3", "Node"],
-    description: "Real-time analytics dashboard for SaaS teams with custom visualizations.",
+    title: "Nextpath-AI",
+    tags: ["React", "Node.js", "Gemini AI", "MongoDB"],
+    description: "AI-driven career advisor with resume analysis, job matching, and intelligent guidance.",
     year: "2025",
+    link: "https://github.com/pruthvihd/Nextpath-AI",
   },
   {
     no: "02",
-    title: "Foldspace Studio",
-    tags: ["Next.js", "Three.js"],
-    description: "Interactive 3D portfolio site for an architecture firm in Copenhagen.",
-    year: "2025",
+    title: "Campus-Connect-Hub",
+    tags: ["React", "Node.js", "Express", "PostgreSQL"],
+    description: "Campus collaboration and event discovery platform connecting students and resources.",
+    year: "2026",
+    link: "https://github.com/pruthvihd/Campus-Connect-Hub",
   },
   {
     no: "03",
-    title: "Marrow Commerce",
-    tags: ["Remix", "Stripe", "Postgres"],
-    description: "Headless commerce platform powering a niche apparel brand.",
-    year: "2024",
+    title: "Fresh Market",
+    tags: ["React", "Node.js", "Express", "MongoDB"],
+    description: "Direct farmer-to-consumer marketplace with real-time freshness scoring and transparent pricing.",
+    year: "2026",
+    link: "https://github.com/pruthvihd/fresh-market",
   },
   {
     no: "04",
-    title: "Echo CMS",
-    tags: ["TypeScript", "tRPC"],
-    description: "Open-source content platform for independent writers and journalists.",
-    year: "2024",
+    title: "Handify",
+    tags: ["React", "Node.js", "Express", "JWT"],
+    description: "Full-stack authentication system with secure session management and OTP-based password recovery.",
+    year: "2026",
+    link: "https://github.com/pruthvihd/Handify",
   },
 ];
 
 export function ProjectsSection() {
   return (
-    <section className="snap-section flex flex-col justify-center px-6 md:px-20 py-20 bg-surface">
+    <section className="snap-section flex flex-col justify-center px-6 md:px-20 py-20 bg-background/20 backdrop-blur-[1px]">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +47,9 @@ export function ProjectsSection() {
         className="flex items-end justify-between mb-12 max-w-6xl"
       >
         <div>
-          <p className="font-mono text-xs text-accent-lime uppercase tracking-widest mb-4">03 · Selected work</p>
+          <p className="font-mono text-xs text-accent-lime uppercase tracking-widest mb-4">
+            03 · Selected work
+          </p>
           <h2 className="font-display text-5xl md:text-6xl font-light leading-tight">
             Recent<span className="italic"> projects.</span>
           </h2>
@@ -54,12 +60,14 @@ export function ProjectsSection() {
         {projects.map((p, i) => (
           <motion.a
             key={p.no}
-            href="#"
+            href={p.link}
+            target={p.link && p.link !== "#" ? "_blank" : undefined}
+            rel={p.link && p.link !== "#" ? "noopener noreferrer" : undefined}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.08 }}
-            className="group grid grid-cols-12 gap-4 items-center py-6 border-b border-foreground/10 hover:bg-background/40 transition-colors px-2 -mx-2"
+            className="group grid grid-cols-12 gap-4 items-center py-6 border-b border-foreground/10 hover:bg-foreground/[0.04] transition-colors px-3 rounded-lg"
           >
             <span className="col-span-1 font-mono text-xs text-foreground/40">{p.no}</span>
             <h3 className="col-span-4 font-display text-2xl md:text-3xl group-hover:text-accent-lime transition-colors">
@@ -68,7 +76,10 @@ export function ProjectsSection() {
             <p className="hidden md:block col-span-4 text-sm text-foreground/60">{p.description}</p>
             <div className="col-span-2 hidden md:flex flex-wrap gap-2">
               {p.tags.map((t) => (
-                <span key={t} className="font-mono text-[10px] uppercase tracking-wider px-2 py-1 border border-foreground/20 rounded-full text-foreground/60">
+                <span
+                  key={t}
+                  className="font-mono text-[10px] uppercase tracking-wider px-2 py-1 border border-foreground/20 rounded-full text-foreground/60"
+                >
                   {t}
                 </span>
               ))}
